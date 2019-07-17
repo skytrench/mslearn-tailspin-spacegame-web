@@ -7,9 +7,6 @@ variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
   dotnetSdkVersion: '2.1.505'
-  organization: 'skytrench'
-  projectKey: 'space-game-web-333.'
-  projectName: 'space-game-web-333.'
 
 steps:
 - task: DotNetCoreInstaller@0
@@ -75,7 +72,7 @@ steps:
 - script: |
     reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
   displayName: 'Create code coverage report'
-  
+
 - task: SonarCloudAnalyze@1
   displayName: 'Run SonarCloud code analysis'
 
@@ -100,4 +97,3 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
- 
